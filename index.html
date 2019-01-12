@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="main.css">
+    <script type="text/javascript" src="todo.js"></script>
 
 </head>
 <body>
@@ -19,13 +20,13 @@
     </p>
 
     <div id="main-container">
-
-    <form method="get" autocomplete="off">
-        <input id="task-input" type="text" name="newtask"
+        <input id="task-input" type="text" name="newtask" onkeydown = "if (event.keyCode == 13){ inputTodo();}"
                onfocus="if(this.value==this.defaultValue)this.value=''"
                onblur="if(this.value=='')this.value=this.defaultValue"
-               value="What next";/>
-    </form>
+               value="+";/>
+
+               <div id="list-container">
+               </div>
 
 
 
