@@ -13,32 +13,42 @@ function inputTodo(){
                 addToList(taskInput);
               }
               document.getElementById("task-input").value = '';
-
-
 }
 
 function addToList(task){
   todoList.push(task);
-  /*for (i=0; i < todoList.length; i++){
-      alert(todoList[i]);
-  }
-  */
-   //document.getElementById("list-container").prepend('<div id="">task</div><br/>');
-
-   var todoElement = document.createElement('div');
-    todoElement.id = "task";
-   todoElement.innerHTML = task;
-
-
- document.getElementById("list-container").prepend(todoElement);
- document.getElementById("list-container").prepend();
+  createDiv(task);
+  saveTodoList();
 }
 
-/*
-function generateList(){
-    for (i=0; i< todoList.length; i++){
-      var task = todoList[i];
+function createDiv(task){
+   var todoElement = document.createElement('div');
+   todoElement.id = "task";
+   todoElement.innerHTML = task;
+   addDivToList(todoElement);
+}
 
+function addDivToList(todoElement){
+  document.getElementById("list-container").prepend(todoElement);
+}
+
+function saveTodoList(){
+  var todoStr = JSON.stringify(todoList);
+  localStorage.setItem("todoList",todoStr);
+}
+
+function getTodoList(){
+    var todoStr = localStorage.getItem("todoList");
+    todoList= JSON.parse(todoStr);
+    if (!todoList){
+      todoList = [];
+    }
+}
+
+function displaySavedList(){
+  getTodoList();
+    document.getElementById("list-container").innerHTML='';
+    for (i=0; i< todoList.length; i++){
+    createDiv(todoList[i]);
     }
   }
-*/
