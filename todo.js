@@ -5,13 +5,7 @@ function inputTodo(){
               var taskInput;
               taskInput = document.getElementById("task-input").value;
               if (VERBOSE) alert (taskInput);
-              if (taskInput==''){
-                // alert("Your task cannot be blank");
-              document.getElementById("task-input").value = 'Your task cannot be blank';
-              }
-              else {
-                addToList(taskInput);
-              }
+              addToList(taskInput);
               document.getElementById("task-input").value = '';
 }
 
@@ -60,6 +54,7 @@ function displaySavedDiv(task,i){
   addDivToList(todoContainer);
 }
 
+
 function addDivToList(todoContainer){
       document.getElementById("list-container").prepend(todoContainer);
 }
@@ -96,10 +91,9 @@ function displaySavedList(){
     document.getElementById("task"+taskIndex).innerHTML= '<span style=color:grey;"><del>'+currentHTML+'</del></span>';
   }
 */
-
 function displayEmptyMsg() {
   if (todoList.length==0) {
-     document.getElementById("list-container").innerHTML = '<br><br>No tasks yet.';
+     document.getElementById("list-container").innerHTML = '<br><br>Add a task to begin.';
   }
 }
 
