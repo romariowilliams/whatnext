@@ -14,19 +14,20 @@ function addToList(task){
   if(htmlstring == "<br><br>Add a task to begin.") {  document.getElementById("list-container").innerHTML ='';}
 
   todoList.push(task);
-  createDiv(task);
+  var taskID= todoList.lenght-1;
+  createDiv(task,taskID);
   saveTodoList();
 }
 
-function createDiv(task){
+function createDiv(task,taskID){
    var todoContainer = document.createElement('div');
    todoContainer.id="task";
    var todoElement = document.createElement('div');
    todoElement.className = 'todo-element';
-   todoElement.id = "task"+todoList.length-1;
+   todoElement.id = "task"+taskID;
    var todoRemove = document.createElement('div');
    todoRemove.className='remove-task';
-   todoRemove.id =todoList.length-1;
+   todoRemove.id =taskID;
    todoElement.innerHTML = task;
    todoRemove.innerHTML = 'x';
    todoRemove.setAttribute('onclick','removeTask(this.id);');
@@ -36,23 +37,6 @@ function createDiv(task){
    addDivToList(todoContainer);
 }
 
-function displaySavedDiv(task,i){
-  var todoContainer = document.createElement('div');
-  todoContainer.id="task";
-  var todoElement = document.createElement('div');
-  todoElement.className = 'todo-element';
-  todoElement.id = "task"+i;
-  var todoRemove = document.createElement('div');
-  todoRemove.className='remove-task';
-  todoRemove.id =i;
-  todoElement.innerHTML = task;
-  todoRemove.innerHTML = 'x';
-  todoRemove.setAttribute('onclick','removeTask(this.id);');
-  todoContainer.appendChild(todoElement);
-  todoContainer.appendChild(todoRemove);
-  todoContainer.setAttribute('onclick','callTask(lastChild.id);');
-  addDivToList(todoContainer);
-}
 
 
 function addDivToList(todoContainer){
@@ -76,7 +60,7 @@ function displaySavedList(){
   getTodoList();
     document.getElementById("list-container").innerHTML='';
     for (i=0; i< todoList.length; i++){
-    displaySavedDiv(todoList[i],i);
+    createDiv(todoList[i],i);
     }
     displayEmptyMsg();
   }
