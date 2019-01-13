@@ -11,7 +11,7 @@ function inputTodo(){
 
 function addToList(task){
   var htmlstring = document.getElementById("list-container").innerHTML;
-  if(htmlstring == "<br><br>No tasks yet.") {  document.getElementById("list-container").innerHTML ='';}
+  if(htmlstring == "<br><br>Add a task to begin.") {  document.getElementById("list-container").innerHTML ='';}
 
   todoList.push(task);
   createDiv(task);
