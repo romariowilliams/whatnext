@@ -22,14 +22,44 @@ function addToList(task){
 }
 
 function createDiv(task){
+   var todoContainer = document.createElement('div');
+   todoContainer.id="task";
    var todoElement = document.createElement('div');
-   todoElement.id = "task";
+   todoElement.className = 'todo-element';
+   todoElement.id = "task"+todoList.length-1;
+   var todoRemove = document.createElement('div');
+   todoRemove.className='remove-task';
+   todoRemove.id =todoList.length-1;
    todoElement.innerHTML = task;
-   addDivToList(todoElement);
+   todoRemove.innerHTML = 'x';
+   todoRemove.setAttribute('onclick','removeTask(this.id);');
+   todoContainer.appendChild(todoElement);
+   todoContainer.appendChild(todoRemove);
+   todoContainer.setAttribute('onclick','callTask(lastChild.id);');
+   addDivToList(todoContainer);
 }
 
-function addDivToList(todoElement){
-  document.getElementById("list-container").prepend(todoElement);
+function displaySavedDiv(task,i){
+  var todoContainer = document.createElement('div');
+  todoContainer.id="task";
+  var todoElement = document.createElement('div');
+  todoElement.className = 'todo-element';
+  todoElement.id = "task"+i;
+  var todoRemove = document.createElement('div');
+  todoRemove.className='remove-task';
+  todoRemove.id =i;
+  todoElement.innerHTML = task;
+  todoRemove.innerHTML = 'x';
+  todoRemove.setAttribute('onclick','removeTask(this.id);');
+  todoContainer.appendChild(todoElement);
+  todoContainer.appendChild(todoRemove);
+  todoContainer.setAttribute('onclick','callTask(lastChild.id);');
+  addDivToList(todoContainer);
+}
+
+
+function addDivToList(todoContainer){
+      document.getElementById("list-container").prepend(todoContainer);
 }
 
 function saveTodoList(){
@@ -49,6 +79,28 @@ function displaySavedList(){
   getTodoList();
     document.getElementById("list-container").innerHTML='';
     for (i=0; i< todoList.length; i++){
-    createDiv(todoList[i]);
+    displaySavedDiv(todoList[i],i);
     }
   }
+
+
+  function callTask(taskIndex) {
+    if (VERBOSE) alert (taskIndex);
+  }
+
+/*
+  function strikeTask(taskIndex){
+    var currentHTML;
+    currentHTML = document.getElementById("task"+taskIndex).innerHTML;
+    document.getElementById("task"+taskIndex).innerHTML= '<span style=color:grey;"><del>'+currentHTML+'</del></span>';
+  }
+*/
+
+function removeTask(taskIndex) {
+  if (VERBOSE) alert (taskIndex);
+  if (taskIndex > -1) {
+    todoList.splice(taskIndex, 1);
+  }
+  saveTodoList();
+  displaySavedList();
+}

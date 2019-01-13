@@ -95,5 +95,27 @@ body {
 
 #task:hover,active {
   color:black;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.6);
+
+}
+
+#task:hover > .remove-task{
+  display:inline-flex; float:right;
+}
+
+#task:active > .remove-task{
+  display:inline-block; float:right;
+}
+
+.todo-element{
+  display:inline-block; float:left;
+}
+
+
+.remove-task{
+  display:none;
+  color:red;
+  margin-right:3%;
+  font-weight:bold;
+  font-family:Segoe UI Light, sans-serif;
 }
