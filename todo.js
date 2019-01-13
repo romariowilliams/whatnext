@@ -60,7 +60,6 @@ function displaySavedDiv(task,i){
   addDivToList(todoContainer);
 }
 
-
 function addDivToList(todoContainer){
       document.getElementById("list-container").prepend(todoContainer);
 }
@@ -87,11 +86,9 @@ function displaySavedList(){
     displayEmptyMsg();
   }
 
-
   function callTask(taskIndex) {
     if (VERBOSE) alert (taskIndex);
   }
-
 /*
   function strikeTask(taskIndex){
     var currentHTML;
