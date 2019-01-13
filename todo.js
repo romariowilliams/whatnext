@@ -16,6 +16,9 @@ function inputTodo(){
 }
 
 function addToList(task){
+  if(document.getElementById("list-container").innerHTML == '<br/><br/>No tasks yet.'){
+    document.getElementById("list-container").innerHTML = '';
+  }
   todoList.push(task);
   createDiv(task);
   saveTodoList();
@@ -81,6 +84,7 @@ function displaySavedList(){
     for (i=0; i< todoList.length; i++){
     displaySavedDiv(todoList[i],i);
     }
+    displayEmptyMsg();
   }
 
 
@@ -96,6 +100,12 @@ function displaySavedList(){
   }
 */
 
+function displayEmptyMsg() {
+  if (todoList.length==0) {
+     document.getElementById("list-container").innerHTML = '<br/><br/>No tasks yet.';
+  }
+}
+
 function removeTask(taskIndex) {
   if (VERBOSE) alert (taskIndex);
   if (taskIndex > -1) {
@@ -103,4 +113,5 @@ function removeTask(taskIndex) {
   }
   saveTodoList();
   displaySavedList();
+
 }
