@@ -93,7 +93,6 @@ body {
 .task:hover,active {
   color:black;
   background-color: rgba(255, 255, 255, 0.6);
-
 }
 
 .task:hover > .remove-task{
@@ -106,6 +105,20 @@ body {
 
 .todo-element{
   display:inline-block; float:left;
+  width:80%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.task:hover > .todo-element{
+  white-space: normal;
+  text-overflow: auto;
+}
+
+.task:active > .todo-element{
+  white-space: normal;
+  text-overflow: auto;
 }
 
 .remove-task{
