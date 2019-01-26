@@ -72,7 +72,6 @@ function callTask(taskIndex) {
     if (VERBOSE) alert (taskIndex);
 }
 
-//fxn
 
 function displayEmptyMsg() {
      document.getElementById("list-container").innerHTML = '<br><br>Add a task to begin.';
