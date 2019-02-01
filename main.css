@@ -114,12 +114,14 @@ body {
   width:80%;
   overflow: hidden;
   white-space: nowrap;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis; /* truncates tasks that are too  */
 }
 
 .task:hover > .todo-element{
   white-space: normal;
-  text-overflow: auto;
+  overflow: auto; /*removes the ellipsis applied previously*/
+  height:auto; /* allow the height to change based on the text length*/
+  word-wrap: break-word; /* breaks words that have no space but exceed width of the div*/
 }
 
 .task:active > .todo-element{
