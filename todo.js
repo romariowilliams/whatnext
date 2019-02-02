@@ -1,4 +1,5 @@
 var todoList = []; //create an array to store list of tasks
+var initialMsg = "Add a task to begin."; //initial message to display when task list is empty
 
 function inputTodo(){
               var taskInput;
@@ -14,13 +15,18 @@ function inputTodo(){
 }
 
 function addToList(task){
-  var htmlstring = document.getElementById("list-container").innerHTML;
-  if(htmlstring == "<br><br>Add a task to begin.") {  document.getElementById("list-container").innerHTML ='';}
-
+  removeInitialMsg(); //check for initial "add task to begin" message and remove if displayed
   todoList.push(task);
   var taskID= todoList.length-1;
   createDiv(task,taskID);
   saveTodoList();
+}
+
+function removeInitialMsg(){
+  var htmlstring = document.getElementById("list-container").innerHTML;
+  if(htmlstring == initialMsg) {
+      document.getElementById("list-container").innerHTML ='';
+    }
 }
 
 function createDiv(task,taskID){
@@ -73,13 +79,11 @@ function displaySavedList(){
 }
 
 function callTask(taskIndex) {
-}
-
-function strikeTask(taskIndex){
+  // function to perform when tasks are clicked
 }
 
 function displayEmptyMsg() {
-     document.getElementById("list-container").innerHTML = '<br><br>Add a task to begin.';
+     document.getElementById("list-container").innerHTML = '<br><br>'+initialMsg;
 }
 
 function removeTask(taskIndex) {
