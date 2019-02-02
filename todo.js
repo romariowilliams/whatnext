@@ -1,12 +1,16 @@
-var todoList = [];
-var VERBOSE = false;
+var todoList = []; //create an array to store list of tasks
 
 function inputTodo(){
               var taskInput;
-              taskInput = document.getElementById("task-input").value;
-              if (VERBOSE) alert (taskInput);
+              taskInput = document.getElementById("task-input").value; //get text from inputbox
+              if(taskInput ==''){ //check if input is blank
+                document.getElementById("task-input").placeholder = 'Task cannot be blank';
+              }
+              else{
               addToList(taskInput);
-              document.getElementById("task-input").value = '';
+              document.getElementById("task-input").value = ''; //clear the input box
+              document.getElementById("task-input").placeholder = ''; //remove  'task cannot be blank' message if it was displayed
+              }
 }
 
 function addToList(task){
@@ -69,16 +73,16 @@ function displaySavedList(){
 }
 
 function callTask(taskIndex) {
-    if (VERBOSE) alert (taskIndex);
 }
 
+function strikeTask(taskIndex){
+}
 
 function displayEmptyMsg() {
      document.getElementById("list-container").innerHTML = '<br><br>Add a task to begin.';
 }
 
 function removeTask(taskIndex) {
-  if (VERBOSE) alert (taskIndex);
   if (taskIndex > -1) {
     todoList.splice(taskIndex, 1);
   }
