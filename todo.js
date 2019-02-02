@@ -1,5 +1,5 @@
 var todoList = []; //create an array to store list of tasks
-var initialMsg = "Add a task to begin."; //initial message to display when task list is empty
+var initialMsg = "<br><br>Add a task to begin."; //initial message to display when task list is empty
 
 function inputTodo(){
               var taskInput;
@@ -83,7 +83,7 @@ function callTask(taskIndex) {
 }
 
 function displayEmptyMsg() {
-     document.getElementById("list-container").innerHTML = '<br><br>'+initialMsg;
+     document.getElementById("list-container").innerHTML = initialMsg;
 }
 
 function removeTask(taskIndex) {
