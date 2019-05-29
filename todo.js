@@ -15,13 +15,14 @@ function inputTodo(){
 }
 
 function addToList(task){
-  removeInitialMsg(); //check for initial "add task to begin" message and remove if displayed
-  todoList.push(task);
-  var taskID= todoList.length-1;
+  removeInitialMsg();
+  todoList.push(task); //add task to the array list of tasks being stored
+  var taskID= todoList.length-1; //assign task ID
   createDiv(task,taskID);
   saveTodoList();
 }
 
+//function to check for initial "add task to begin" message and remove if displayed
 function removeInitialMsg(){
   var htmlstring = document.getElementById("list-container").innerHTML;
   if(htmlstring == initialMsg) {
@@ -29,6 +30,7 @@ function removeInitialMsg(){
     }
 }
 
+ //function to create element to display task
 function createDiv(task,taskID){
    var todoContainer = document.createElement('div');
    todoContainer.className="task";
